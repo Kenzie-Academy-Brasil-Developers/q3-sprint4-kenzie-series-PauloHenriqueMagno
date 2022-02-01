@@ -9,3 +9,8 @@
 | **SQL** - Tabela é criada quando não existe, os tipos de dados estão declarados corretamente, queries escritas corretamente. | 2.5 |
 | **POO** - Código e estrutura do projeto. Utilizou corretamente orientação a objetos, código organizado, uso de boas práticas, lógicas bem implementadas. | 2 |
 | Arquivos **requirements.txt**, **.env**, **.env.example** e **.gitignore** (**venv** e **.env** adicionados) | 1 |
+
+
+## Anotações
+
+https://www.w3schools.blog/to-char-function-oracle

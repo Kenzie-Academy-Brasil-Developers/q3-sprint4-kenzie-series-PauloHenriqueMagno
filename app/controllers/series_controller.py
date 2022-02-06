@@ -70,9 +70,21 @@ def create():
             if not data.get(value) and value != "id":
                 raise NullValueNotAllowed(f"{value} is necessary")
 
+        invalid_values = {
+            "invalid_values": {},
+            "correct_values_type": {},
+            "is_ok": True
+        }
+
         for value in VALUE_NAMES:
             if value != "id" and not type(data[value]) == VALUE_TYPES[value]:
-                raise TypeError({value: data[value]})
+                invalid_values["invalid_values"][value] = data[value]
+                invalid_values["correct_values_type"][value] = str(VALUE_TYPES[value])[8:-2]
+                invalid_values["is_ok"] = False
+
+        if not invalid_values["is_ok"]:
+            del invalid_values["is_ok"]
+            raise TypeError(invalid_values)
 
         serie = Serie(**data)
 
@@ -93,4 +105,4 @@ def create():
         return jsonify({"error": err.args[0]}), 400
     
     except TypeError as err:
-        return jsonify({"error": err.args[0]}), 400
+        return jsonify(err.args[0]), 400
